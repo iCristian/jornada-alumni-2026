@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarjeta de Marca · Consultorio Quilpué (CMQ)</title>
+  <style>
+    :root {
+      --rojo-matroneria: #BF210C;
+      --azul-cmq: #3661A2;
+      --morado-cmq: #784593;
+      --rosa-suave: #FCEAE6;
+      --blanco: #FFFFFF;
+      --gris-perla: #F4F6F9;
+      --gris-pizarra: #1F2937;
+      --borde-suave: #D8E2EE;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 20px;
+      font-family: Calibri, "Segoe UI", Arial, sans-serif;
+      color: var(--gris-pizarra);
+      background: var(--gris-perla);
+      line-height: 1.5;
+    }
+    .page {
+      max-width: 1020px;
+      margin: 0 auto;
+      background: var(--blanco);
+      border-radius: 8px 40px 8px 8px;
+      box-shadow: 0 8px 30px rgba(31, 41, 55, 0.08);
+      overflow: hidden;
+      border: 1px solid var(--borde-suave);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 32px 40px;
+      background: linear-gradient(135deg, #FFFFFF 65%, #F4F6F9 100%);
+      border-bottom: 4px solid var(--rojo-matroneria);
+      position: relative;
+    }
+    .header-logos {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .header-logos img.cmq {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+    }
+    .header-logos img.minsal {
+      width: 78px;
+      height: auto;
+      object-fit: contain;
+      border-left: 1px solid var(--borde-suave);
+      padding-left: 16px;
+    }
+    h1, h2, h3 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      margin-top: 0;
+    }
+    .brand-tag {
+      display: inline-block;
+      background: var(--rojo-matroneria);
+      color: var(--blanco);
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .header h1 {
+      font-size: 32px;
+      color: var(--rojo-matroneria);
+      margin-bottom: 6px;
+    }
+    .header p.tagline {
+      margin: 0;
+      font-size: 18px;
+      color: var(--azul-cmq);
+      font-weight: 600;
+    }
+    .content {
+      padding: 36px 40px;
+    }
+    .section {
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--borde-suave);
+    }
+    .section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .num-box {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--azul-cmq);
+      color: var(--rojo-matroneria);
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: var(--blanco);
+    }
+    .section-title h2 {
+      font-size: 22px;
+      color: var(--gris-pizarra);
+      margin: 0;
+    }
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .swatch {
+      border: 1px solid var(--borde-suave);
+      border-radius: 4px 24px 4px 4px;
+      overflow: hidden;
+      background: var(--blanco);
+    }
+    .swatch-color {
+      height: 76px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 10px 14px;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .swatch-body {
+      padding: 12px 14px;
+      font-size: 14px;
+    }
+    .swatch-body code {
+      display: block;
+      font-size: 12.5px;
+      color: #4B5563;
+      margin-top: 2px;
+    }
+    .logos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .logo-card {
+      border: 1px solid var(--borde-suave);
+      border-radius: 4px 20px 4px 4px;
+      padding: 16px;
+      text-align: center;
+      background: var(--blanco);
+    }
+    .logo-card.dark {
+      background: #000000;
+      color: var(--blanco);
+    }
+    .logo-card img {
+      height: 88px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+    .prop-bar {
+      display: flex;
+      height: 38px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--borde-suave);
+      margin: 16px 0;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .prop-60 { width: 60%; background: var(--gris-perla); color: var(--gris-pizarra); display: flex; align-items: center; justify-content: center; }
+    .prop-30 { width: 30%; background: var(--rojo-matroneria); color: var(--blanco); display: flex; align-items: center; justify-content: center; }
+    .prop-10 { width: 10%; background: var(--azul-cmq); color: var(--blanco); display: flex; align-items: center; justify-content: center; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14.5px;
+    }
+    th, td {
+      border: 1px solid var(--borde-suave);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th {
+      background: var(--azul-cmq);
+      color: var(--blanco);
+      font-family: Arial, sans-serif;
+    }
+    tr:nth-child(even) td {
+      background: var(--gris-perla);
+    }
+    .mockups-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    @media (max-width: 800px) {
+      .mockups-grid { grid-template-columns: 1fr; }
+    }
+    /* Slide Mockup adapted from Slidesgo template */
+    .slide-mockup {
+      background: linear-gradient(135deg, #FFFFFF 55%, #F4F6F9 100%);
+      border: 1px solid var(--borde-suave);
+      border-radius: 8px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .slide-corner-red {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 140px;
+      height: 75px;
+      background: var(--rojo-matroneria);
+      border-top-left-radius: 32px;
+    }
+    .slide-pill-blue {
+      position: absolute;
+      bottom: 22px;
+      right: 90px;
+      width: 95px;
+      height: 16px;
+      background: var(--azul-cmq);
+      border-radius: 999px;
+      opacity: 0.9;
+    }
+    .slide-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+      z-index: 1;
+    }
+    .slide-card {
+      background: var(--rosa-suave);
+      padding: 12px;
+      border-radius: 0 20px 0 0;
+      border-left: 3px solid var(--rojo-matroneria);
+    }
+    /* Poster Mockup (Section 11) */
+    .poster-mockup {
+      background: var(--blanco);
+      border: 2px solid var(--borde-suave);
+      border-radius: 8px;
+      padding: 22px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .poster-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--rosa-suave);
+      padding: 8px 12px;
+      border-radius: 0 16px 0 0;
+      margin-bottom: 8px;
+      font-size: 13.5px;
+    }
+    .poster-footer {
+      background: var(--rojo-matroneria);
+      color: var(--blanco);
+      padding: 10px 14px;
+      border-radius: 20px 0 0 0;
+      font-size: 12.5px;
+      margin-top: 10px;
+    }
+    .rules-box {
+      background: var(--gris-perla);
+      border-left: 5px solid var(--rojo-matroneria);
+      padding: 18px 24px;
+      border-radius: 0 20px 0 0;
+    }
+    .confirm-box {
+      background: var(--rosa-suave);
+      border: 1px solid var(--rojo-matroneria);
+      border-radius: 0 24px 0 0;
+      padding: 18px 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <span class="brand-tag">Tarjeta de Marca · Salud y Matronería</span>
+        <h1>1) Consultorio Quilpué</h1>
+        <p class="tagline">«Salud pública y matronería cercana, moderna y al servicio de las personas de Quilpué.»</p>
+      </div>
+      <div class="header-logos">
+        <img class="cmq" src="logos/cmq-azul.png" alt="Logo Corporación Municipal de Quilpué en color azul" />
+        <img class="minsal" src="logos/minsal.png" alt="Logo Ministerio de Salud Gobierno de Chile" />
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- 2. LOGOS -->
+      <section class="section">
+        <div class="section-title">
+          <span class="num-box">02</span>
+          <h2>Logos: versiones, orden, espacio libre y tamaño mínimo</h2>
+        </div>
+        <div class="logos-grid">
+          <div class="logo-card">
+            <img src="logos/cmq-azul.png" alt="Logo CMQ Azul" />
+            <div><strong>Principal a color</strong><br/><small><code>cmq-azul.png</code> (#3661A2)<br/>Sobre fondos claros</small></div>
+          </div>
+          <div class="logo-card dark">
+            <img src="logos/cmq-blanco.jpeg" alt="Logo CMQ Blanco" />
+            <div><strong>Versión en blanco</strong><br/><small><code>cmq-blanco.jpeg</code><br/>Sobre bloques oscuros</small></div>
+          </div>
+          <div class="logo-card">
+            <img src="logos/cmq-morado.png" alt="Logo CMQ Morado" />
+            <div><strong>Un color alternativo</strong><br/><small><code>cmq-morado.png</code> (#784593)<br/>Campañas de género</small></div>
+          </div>
+          <div class="logo-card">
+            <img src="logos/cmq-rosado-mescancermamas.jpeg" alt="Logo CMQ Mes Cáncer de Mama" />
+            <div><strong>Especial Octubre</strong><br/><small><code>cmq-rosado...jpeg</code><br/>Mes Cáncer de Mama</small></div>
+          </div>
+          <div class="logo-card">
+            <img src="logos/minsal.png" alt="Logo MINSAL" />
+            <div><strong>Respaldo MINSAL</strong><br/><small><code>minsal.png</code><br/>Esquina sup. derecha</small></div>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Orden:</strong> Logo <strong>CMQ</strong> primero (izquierda o firma principal). En portadas de presentaciones y documentos formales, logo <strong>MINSAL</strong> en la esquina superior derecha sin competir en tamaño con el de la Corporación.</li>
+          <li><strong>Espacio libre:</strong> Margen alrededor sin textos ni bordes equivalente a la altura de la palabra «QUILPUÉ» dentro del sello (1/4 del diámetro).</li>
+          <li><strong>Tamaño mínimo:</strong> En impresos, mínimo <strong>20 mm (2 cm)</strong> de diámetro para CMQ y <strong>18 mm</strong> de ancho para MINSAL. En pantallas, mínimo <strong>90 px</strong> (CMQ) y <strong>80 px</strong> (MINSAL).</li>
+        </ul>
+      </section>
+
+      <!-- 3. COLORES -->
+      <section class="section">
+        <div class="section-title">
+          <span class="num-box">03</span>
+          <h2>Colores y proporción de uso (60 % Neutros · 30 % Principal · 10 % Apoyo)</h2>
+        </div>
+        <div class="prop-bar" role="img" aria-label="Proporción de color: 60% neutros, 30% rojo matronería principal, 10% azul CMQ y rosa suave de apoyo">
+          <div class="prop-60">60 % Neutros (Fondos claros y texto oscuro)</div>
+          <div class="prop-30">30 % Rojo Matronería (#BF210C)</div>
+          <div class="prop-10">10 % Apoyo</div>
+        </div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background:#BF210C; color:#FFFFFF;">
+              <span>Rojo Matronería</span><span>PRINCIPAL</span>
+            </div>
+            <div class="swatch-body">
+              <strong>HEX: #BF210C</strong>
+              <code>RGB: 191, 33, 12</code>
+              <code>CMYK: 0, 83, 94, 25 (confirmar con la imprenta)</code>
+              <p style="margin:6px 0 0;">Títulos principales, cifras clave, esquina curva y llamados a la acción.</p>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#3661A2; color:#FFFFFF;">
+              <span>Azul CMQ</span><span>APOYO 1</span>
+            </div>
+            <div class="swatch-body">
+              <strong>HEX: #3661A2</strong>
+              <code>RGB: 54, 97, 162</code>
+              <code>CMYK: 67, 40, 0, 36 (confirmar con la imprenta)</code>
+              <p style="margin:6px 0 0;">Color del logo CMQ. Subtítulos, bordes de cajas de números e íconos.</p>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#FCEAE6; color:#1F2937;">
+              <span>Rosa Suave</span><span>APOYO 2</span>
+            </div>
+            <div class="swatch-body">
+              <strong>HEX: #FCEAE6</strong>
+              <code>RGB: 252, 234, 230</code>
+              <code>CMYK: 0, 7, 9, 1 (confirmar con la imprenta)</code>
+              <p style="margin:6px 0 0;">Fondos de tarjetas con esquina curva, cajas de consejos y filas suaves.</p>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#FFFFFF; color:#1F2937; border-bottom:1px solid #E5E7EB;">
+              <span>Blanco Puro</span><span>NEUTRO 1</span>
+            </div>
+            <div class="swatch-body">
+              <strong>HEX: #FFFFFF</strong>
+              <code>RGB: 255, 255, 255</code>
+              <code>CMYK: 0, 0, 0, 0 (confirmar con la imprenta)</code>
+              <p style="margin:6px 0 0;">Fondo principal limpio («aire») y textos sobre bloques rojos o azules.</p>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#F4F6F9; color:#1F2937; border-bottom:1px solid #E5E7EB;">
+              <span>Gris Perla Claro</span><span>NEUTRO 2</span>
+            </div>
+            <div class="swatch-body">
+              <strong>HEX: #F4F6F9</strong>
+              <code>RGB: 244, 246, 249</code>
+              <code>CMYK: 2, 1, 0, 2 (confirmar con la imprenta)</code>
+              <p style="margin:6px 0 0;">Fondo secundario de láminas y recuadros informativos suaves.</p>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#1F2937; color:#FFFFFF;">
+              <span>Gris Pizarra Oscuro</span><span>NEUTRO 3</span>
+            </div>
+            <div class="swatch-body">
+              <strong>HEX: #1F2937</strong>
+              <code>RGB: 31, 41, 55</code>
+              <code>CMYK: 44, 25, 0, 78 (confirmar con la imprenta)</code>
+              <p style="margin:6px 0 0;">Todo el texto de párrafos, listas y tablas sobre fondos claros.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. CONTRASTES -->
+      <section class="section">
+        <div class="section-title">
+          <span class="num-box">04</span>
+          <h2>Combinaciones de texto y fondo permitidas y prohibidas</h2>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Muestra visual</th>
+              <th>Combinación (Texto sobre Fondo)</th>
+              <th>Contraste exacto</th>
+              <th>Uso permitido</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span style="background:#FFFFFF; color:#1F2937; padding:3px 10px; border:1px solid #ccc; font-weight:700;">Texto de ejemplo</span></td>
+              <td>Gris Pizarra (<code>#1F2937</code>) sobre Blanco Puro (<code>#FFFFFF</code>)</td>
+              <td><strong>14,68:1</strong></td>
+              <td>Permitido para todo texto normal y títulos</td>
+            </tr>
+            <tr>
+              <td><span style="background:#FCEAE6; color:#1F2937; padding:3px 10px; font-weight:700;">Texto de ejemplo</span></td>
+              <td>Gris Pizarra (<code>#1F2937</code>) sobre Rosa Suave (<code>#FCEAE6</code>)</td>
+              <td><strong>12,62:1</strong></td>
+              <td>Permitido para cajas destacadas y consejos</td>
+            </tr>
+            <tr>
+              <td><span style="background:#FFFFFF; color:#BF210C; padding:3px 10px; border:1px solid #ccc; font-weight:700;">Título Rojo</span></td>
+              <td>Rojo Matronería (<code>#BF210C</code>) sobre Blanco Puro (<code>#FFFFFF</code>)</td>
+              <td><strong>6,11:1</strong></td>
+              <td>Permitido para títulos, cifras y textos destacados</td>
+            </tr>
+            <tr>
+              <td><span style="background:#BF210C; color:#FFFFFF; padding:3px 10px; font-weight:700;">Texto Blanco</span></td>
+              <td>Blanco Puro (<code>#FFFFFF</code>) sobre Rojo Matronería (<code>#BF210C</code>)</td>
+              <td><strong>6,11:1</strong></td>
+              <td>Permitido para franjas, botones y bloques curvos</td>
+            </tr>
+            <tr>
+              <td><span style="background:#3661A2; color:#FFFFFF; padding:3px 10px; font-weight:700;">Subtítulo Azul</span></td>
+              <td>Blanco Puro (<code>#FFFFFF</code>) sobre Azul CMQ (<code>#3661A2</code>) o viceversa</td>
+              <td><strong>6,20:1</strong></td>
+              <td>Permitido para encabezados de tabla y subtítulos</td>
+            </tr>
+            <tr>
+              <td><span style="background:#3661A2; color:#BF210C; padding:3px 10px; font-weight:700;">PROHIBIDO</span></td>
+              <td><strong>PROHIBIDO:</strong> Rojo Matronería (<code>#BF210C</code>) con Azul CMQ (<code>#3661A2</code>)</td>
+              <td><strong>1,01:1 (Nulo)</strong></td>
+              <td><strong>No usar juntos como texto/fondo ni para distinguir barras en gráficos sin etiquetas ni achurado.</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 5, 6, 7, 8, 9 RESUMEN VISUAL Y ADAPTACIÓN DEL EJEMPLO -->
+      <section class="section">
+        <div class="section-title">
+          <span class="num-box">07</span>
+          <h2>Adaptación de tu diseño de ejemplo y boceto de afiche (Secciones 5 a 11)</h2>
+        </div>
+        <div class="mockups-grid">
+          <!-- Adaptación Lámina Slidesgo -->
+          <div class="slide-mockup">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span style="font-family:Arial,sans-serif; font-weight:700; font-size:22px; color:var(--rojo-matroneria);">Adaptación de lámina (Estilo ejemplo en Rojo + Azul CMQ)</span>
+                <img src="logos/cmq-azul.png" alt="Logo CMQ" style="height:40px;" />
+              </div>
+              <p style="margin:0; font-size:14px;">Usamos <strong>Arial Bold</strong> en títulos y <strong>Calibri</strong> en textos, con los bloques de una esquina curva y cajas de borde fino de tu plantilla:</p>
+              <div class="slide-cards">
+                <div class="slide-card">
+                  <div class="num-box" style="margin-bottom:6px;">01</div>
+                  <strong style="display:block; color:var(--rojo-matroneria); font-family:Arial,sans-serif;">Control Prenatal</strong>
+                  <small>Ingreso precoz y acompañamiento integral a la gestante y su familia.</small>
+                </div>
+                <div class="slide-card">
+                  <div class="num-box" style="margin-bottom:6px;">02</div>
+                  <strong style="display:block; color:var(--azul-cmq); font-family:Arial,sans-serif;">Salud Sexual</strong>
+                  <small>Orientación cercana en regulación de fertilidad y prevención de ITS.</small>
+                </div>
+                <div class="slide-card">
+                  <div class="num-box" style="margin-bottom:6px;">03</div>
+                  <strong style="display:block; color:var(--rojo-matroneria); font-family:Arial,sans-serif;">Toma de PAP</strong>
+                  <small>Examen preventivo periódico con explicación clara paso a paso.</small>
+                </div>
+              </div>
+            </div>
+            <div style="font-size:12px; color:#4B5563; margin-top:20px;">Consultorio Quilpué · Baquedano 960, Quilpué · https://cmq.cl/</div>
+            <div class="slide-corner-red"></div>
+            <div class="slide-pill-blue"></div>
+          </div>
+
+          <!-- Ejemplo Afiche (Sección 11) -->
+          <div class="poster-mockup">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <img src="logos/cmq-azul.png" alt="Logo CMQ" style="height:44px;" />
+                <span style="font-size:11px; color:var(--azul-cmq); border:1px solid var(--azul-cmq); padding:2px 8px; border-radius:999px;">11) Ejemplo de Afiche</span>
+              </div>
+              <h3 style="color:var(--rojo-matroneria); font-size:20px; margin-bottom:6px;">¿Cuándo pedir tu control de matronería?</h3>
+              <div style="width:60px; height:6px; background:var(--azul-cmq); border-radius:999px; margin-bottom:12px;"></div>
+              <div class="poster-step"><span class="num-box" style="width:26px;height:26px;font-size:13px;">01</span> <span>Si sospechas embarazo o quieres planificarlo.</span></div>
+              <div class="poster-step"><span class="num-box" style="width:26px;height:26px;font-size:13px;">02</span> <span>Para elegir o renovar tu método anticonceptivo.</span></div>
+              <div class="poster-step"><span class="num-box" style="width:26px;height:26px;font-size:13px;">03</span> <span>Para realizar tu Papanicolaou (PAP) o examen de mamas.</span></div>
+            </div>
+            <div class="poster-footer">
+              <strong>Consultorio Quilpué</strong><br/>
+              Baquedano 960, Quilpué, Chile · https://cmq.cl/<br/>
+              Teléfono: [POR CONFIRMAR]
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. REGLAS FIJAS -->
+      <section class="section">
+        <div class="section-title">
+          <span class="num-box">10</span>
+          <h2>REGLAS FIJAS (se aplican a todo material que se haga con esta tarjeta de marca)</h2>
+        </div>
+        <div class="rules-box">
+          <ol style="margin:0; padding-left:20px;">
+            <li>El logo no se redibuja, deforma, recorta, recolorea ni lleva efectos. Se respeta el orden de los logos y su espacio libre.</li>
+            <li>No se inventan datos: teléfonos, direcciones, web, nombres, cargos, fechas, cifras ni citas. Si falta un dato, se escribe [POR CONFIRMAR].</li>
+            <li>Todo texto debe leerse bien: contraste mínimo 4,5:1 (3:1 en títulos grandes) y letra suficientemente grande. El color nunca es la única forma de dar un mensaje: se acompaña de texto, ícono o forma.</li>
+            <li>Fotos: solo reales y con autorización de quienes aparecen. Nada de texto ni logos encima de las caras. Bebés, niñas, niños o adolescentes solo con autorización escrita de sus padres o tutores y según la norma de la institución; si no la hay, se usan ilustraciones o fotos sin rostro. Nunca datos ni fotos de pacientes sin consentimiento.</li>
+            <li>Una idea por pieza, poco texto y mucho aire. Si un texto no cabe, se acorta el texto; no se achica la letra por debajo del mínimo.</li>
+            <li>Para usuarias: lenguaje claro, frases cortas, palabras de uso diario (nivel de lectura de 6.º básico) y pertinencia cultural. Sin indicaciones de medicamentos. El contenido clínico lo valida una matrona con la norma o guía vigente, y se cita la fuente.</li>
+            <li>Impresos: medida exacta, 3 mm de sangrado por lado (el fondo se extiende más allá del corte), textos a 5 mm o más del borde, imágenes en buena resolución (300 ppp para impresos que se leen de cerca), PDF para imprenta y prueba de color antes del tiraje. Todo código QR se prueba con el celular.</li>
+            <li>Redes sociales: tamaño exacto en píxeles, textos importantes dentro de la zona segura y una descripción de la imagen (texto alternativo) en cada pieza.</li>
+            <li>No se copian marcas, personajes, logos ni diseños ajenos.</li>
+            <li>Lo que entrega la IA es un borrador: antes de entregar, revisa la pieza con estas reglas y di qué debo confirmar. Si corresponde, se declara que se usó IA.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- LISTA POR CONFIRMAR -->
+      <section class="section">
+        <div class="confirm-box">
+          <h3 style="color:var(--rojo-matroneria); margin-bottom:8px;">Lista breve de lo que debes confirmar</h3>
+          <ul style="margin:0; padding-left:20px;">
+            <li><strong>Nombre formal en el pie de firma:</strong> Confirmar si se mantiene «Consultorio Quilpué» o «CESFAM Quilpué · Corporación Municipal de Quilpué».</li>
+            <li><strong>Teléfono y correo de contacto:</strong> Actualmente marcados como <code>[POR CONFIRMAR]</code> (solo están verificados <em>Baquedano 960, Quilpué, Chile</em> y <em>https://cmq.cl/</em>).</li>
+            <li><strong>Logo CMQ blanco sin fondo:</strong> El archivo <code>cmq-blanco.jpeg</code> tiene fondo negro; conseguir versión <code>.png</code> transparente para usarlo sobre bloques rojos o azules.</li>
+            <li><strong>Prueba de color en imprenta:</strong> Confirmar en imprenta los valores CMYK de <code>#BF210C</code> y <code>#3661A2</code> antes del tiraje.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
